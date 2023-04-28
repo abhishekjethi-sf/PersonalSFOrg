@@ -1,0 +1,15 @@
+<aura:component controller="ProgressIndicatorPathComponent" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<!-- attributes -->
+    <aura:attribute name="allSteps" type="List"/>
+    <aura:attribute name="currentStep" type="String"/>    
+    <!--handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:dependency resource="markup://force:editRecord" type="EVENT" />
+    <aura:handler event="force:refreshView" action="{!c.init}" />	
+
+    <lightning:progressIndicator currentStep="{!v.currentStep}" type="path" variant="base">
+        <aura:iteration items="{! v.allSteps }" var="step">
+            <lightning:progressStep label="{! step.label }" value="{! step.value }"/>
+        </aura:iteration>
+    </lightning:progressIndicator>    
+</aura:component>

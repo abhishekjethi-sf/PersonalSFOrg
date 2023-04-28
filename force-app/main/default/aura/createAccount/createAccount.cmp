@@ -1,0 +1,11 @@
+<!-- CREATE ACCOUNT -->
+<aura:component controller="AccountEventAppCtrl">
+    <aura:attribute name="newAccount" type="Account" default="{ 'sObjectType':'Account', 'Name' : '', 'Site' : ''}"/>
+    <aura:registerEvent name="accEvent" type="c:createAccountEvent"/>
+    <form class="slds-form--stacked">    
+        <lightning:input name="Account Name" label="Account Name" value="{!v.newAccount.Name}" required="true" />
+        <lightning:input name="Account Site" label="Account Site" value="{!v.newAccount.Site}"/>
+        <br></br>
+        <lightning:button variant="brand" label="Create Account" onclick="{! c.createAccount }" />
+    </form>
+</aura:component>

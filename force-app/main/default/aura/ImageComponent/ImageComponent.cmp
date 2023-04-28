@@ -1,0 +1,3 @@
+<aura:component implements="lightning:availableForFlowScreens" access="global">
+          <img src="{!$Resource.AbhishekPic}" width="300" height="300"/>
+</aura:component>

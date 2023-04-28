@@ -1,0 +1,12 @@
+<!-- Component creating Account with String fields-->
+<aura:component controller="CreateAccountUsingApexCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes" access="GLOBAL">
+    <aura:attribute name="accName" type="String" />
+	<aura:attribute name="accNumber" type="String" />
+    <aura:attribute name="accSite" type="String" />
+    
+    <lightning:input label="Account Name" value="{!v.accName}" />
+    <lightning:input label="Account Number" value="{!v.accNumber}" />
+    <lightning:input label="Account Site" value="{!v.accSite}" />
+
+    <lightning:button variant="brand" label="Create Account" onclick="{!c.createAccount}" />
+</aura:component>

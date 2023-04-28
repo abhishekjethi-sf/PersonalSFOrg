@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+       <lightning:layout verticalAlign="stretch" class="slds-grid slds-wrap table_row">
+            <c:accountHeaderSectionItem sectionTitle="Account &amp; Contact Information" iconName="standard:account" sectionName = "accountDetails" accRecordId="{!v.recordId}" />
+            <c:accountHeaderSectionItem sectionTitle="Account &amp; Customer Information" iconName="standard:account" sectionName = "accountDetails" accRecordId="{!v.recordId}" />
+            <c:accountHeaderSectionItem sectionTitle="Account &amp; Customer Information" iconName="standard:account" sectionName = "accountDetails" accRecordId="{!v.recordId}" />
+            <c:accountHeaderSectionItem sectionTitle="Nikki Org Information" iconName="custom:custom14" sectionName = "nikkiOrg" accRecordId="{!v.recordId}" />
+            <c:accountHeaderSectionItem sectionTitle="Opportunity Info &amp; Cases Info" iconName="utility:announcement" sectionName = "oppAndCaseInfo" accRecordId="{!v.recordId}" />
+        </lightning:layout>
+</aura:component>

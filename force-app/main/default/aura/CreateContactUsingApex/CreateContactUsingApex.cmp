@@ -1,0 +1,10 @@
+<!-- Component creating Contact using attribute as type Contact and redirecting it to new Contact which is created -->
+<aura:component controller="createContactUsingApexCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="newContact" type="Contact" default="{'sobjectType':'Contact','FirstName': '','LastName': ''}"/>
+   
+    <lightning:input label="First Name" name="firstname" value="{!v.newContact.FirstName}" />
+    <lightning:input label="Last Name" name="lastname" value="{!v.newContact.LastName}" required="true" />
+    
+    <br></br>
+    <lightning:button variant="brand" label="Create Contact" onclick="{!c.createContact}"/>
+</aura:component>

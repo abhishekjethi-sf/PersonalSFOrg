@@ -1,0 +1,7 @@
+<aura:component >
+    <aura:registerEvent name="cmpEvent" type="c:ceEvent"/>
+    <p> Component firing event</p>
+    <p>
+        <lightning:button variant="brand" label="Submit" title="Submit" onclick="{!c.handleClick }"/>
+    </p>
+</aura:component>

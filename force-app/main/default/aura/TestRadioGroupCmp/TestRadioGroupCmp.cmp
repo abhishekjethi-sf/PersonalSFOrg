@@ -1,0 +1,10 @@
+<aura:component >
+	 <aura:attribute name="options" type="List" default="[{'label': 'No', 'value': 'No'},
+                                                            {'label': 'Yes', 'value': 'Yes'}]"/>
+    <aura:attribute name="value" type="String" default="option1"/>
+
+    <lightning:radioGroup name="radioButtonGroup"
+                          
+                          options="{! v.options }"
+                          type="button" onchange="{!c.changeRadioBtn}"/>
+</aura:component>

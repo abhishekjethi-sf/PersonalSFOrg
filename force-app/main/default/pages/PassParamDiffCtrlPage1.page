@@ -1,0 +1,12 @@
+<apex:page controller="PassParamDiffCtrl1">
+	<apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                String 1: <apex:inputText value="{!str1}"/>
+                String 2: <apex:inputText value="{!str2}"/>
+                Checkbox: <apex:inputCheckbox value="{!bVisible}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:commandButton value="Display" action="{!display}" disabled="{!btnDisabled}"/>
+	</apex:form>
+</apex:page>

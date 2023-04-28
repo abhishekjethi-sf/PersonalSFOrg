@@ -1,0 +1,4 @@
+<aura:component >
+	<aura:attribute name="acctId" type="String" />
+    {!v.acctId}
+</aura:component>

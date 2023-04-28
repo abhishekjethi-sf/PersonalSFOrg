@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="accountDataTableController">
+	 <!-- ltng:require styles="{!$Resource.SLDS24 + '/assets/styles/lightning-design-system-ltng.css'}"/ -->
+    <aura:attribute name="mydata" type="Object"/>
+    <aura:attribute name="mycolumns" type="List"/>
+ 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:datatable data="{!v.mydata}" columns="{! v.mycolumns }" keyField="Id"/>
+</aura:component>

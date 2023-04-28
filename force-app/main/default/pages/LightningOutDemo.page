@@ -1,0 +1,14 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false">
+    <apex:includeLightning />
+    <div id="lightning" />
+         <script>
+         $Lightning.use("c:LightningOutContainerApp", function() {
+         $Lightning.createComponent("c:AccountForm",
+         {},
+         "lightning",
+         function(cmp) {
+            console.log('Component created, do something cool here');
+         });
+         });
+         </script>    
+</apex:page>

@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <aura:attribute name="checkVisibility" type="boolean" default="false"/>
+    <aura:registerEvent name="FileUploadEvent" type="c:LightningFileUploadEvent" />
+    
+    <lightning:card title="File Upload">
+        <aura:if isTrue="{!v.checkVisibility}">
+        	<c:LightningFileUploadHandleEvent/>
+		</aura:if>
+        <div class="slds-theme_default">
+            <!--lightning:input aura:id="fileId" onchange="{!c.handleFilesChange}" type="file" name="file" label="Upload Attachment" multiple="true" required="true"/--> 
+            <lightning:fileUpload title="Upload Files" aura:id="fileId"
+                                  name="fileuploader"
+                                  label="Upload Files"
+                                  recordId="{!v.recordId}"
+                                  multiple="true"
+                                  accept=".pdf,.png,.jpg" onuploadfinished="{!c.afterFinish}"/>
+        </div>
+        <br></br>
+        <lightning:button label="Save" title="Save" variant="brand" onclick="{! c.save }" />
+        <lightning:button label="Cancel" title="Cancel" onclick="{! c.cancel }"/>
+    </lightning:card>
+</aura:component>

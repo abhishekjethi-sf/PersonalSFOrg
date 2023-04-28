@@ -1,0 +1,15 @@
+<template>
+    <p class="paragraphText">
+        Welcome to Lightning Web Component
+    </p>
+    <div class="slds-m-around_small">
+        <div class="slds-p-bottom_small">{name}</div>
+        <div>{address} </div>
+    </div>
+    <lightning-layout multiple-rows="true">   
+        <lightning-layout-item padding="around-small" size="12">
+            <label for="fieldid" class="strong-text">Custom Label</label>
+            <lightning-input id="fieldid" type="text" label="Name" value={inputText} onchange={handleInputChange} onblur={handleOnBlur} variant="label-hidden"></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout> 
+</template>

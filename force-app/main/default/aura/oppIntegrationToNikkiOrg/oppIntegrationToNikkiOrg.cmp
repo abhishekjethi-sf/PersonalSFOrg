@@ -1,0 +1,22 @@
+<aura:component controller="oppIntegrationtoNikkiOrgCls" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="oppDetails" type="List" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> <!-- Get the data from Nikki Org once the page is loaded -->
+    
+    <!-- Display a lightning card with details about the record -->
+    <div> 
+        <lightning:card title="Opportunity Information" iconName="standard:opportunity">
+            <aura:iteration items="{!v.oppDetails}" var="opportunity">
+                    Opportunity Name : {!opportunity.Name}
+                    <br />
+                    Opportunity Amount : {!opportunity.Amount}
+                    <br />
+                    Opportunity Close Date : {!opportunity.CloseDate}
+                    <br />
+                    Opportunity StageName : {!opportunity.StageName}
+                    <br />
+                    Opportunity Amount : {!opportunity.Amount}                                        
+            </aura:iteration>
+       </lightning:card>
+    </div> 
+</aura:component>

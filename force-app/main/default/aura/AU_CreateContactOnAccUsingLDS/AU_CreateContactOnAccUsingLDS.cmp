@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="record" type="Account" />
+    <aura:attribute name="simpleRecord" type="Account" />
+    <force:recordData aura:id="contactCmp" recordId="{!v.recordId}" layoutType="FULL" targetFields ="{!v.simpleRecord}"/>
+    <lightning:card title="{!'Enter Contact Information for '+ v.simpleRecord.Name}">
+    
+    </lightning:card>   
+</aura:component>

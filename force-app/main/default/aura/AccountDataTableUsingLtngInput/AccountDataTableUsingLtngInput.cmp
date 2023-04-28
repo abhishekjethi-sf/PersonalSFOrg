@@ -1,0 +1,35 @@
+<aura:component controller="AccountDataController">
+    <aura:attribute name="accounts" type="Account[]" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Record Id">Account Id</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Site">Account Site</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+                <aura:iteration items = "{!v.accounts}" var="acc" >
+                    <tr>
+                        <td data-label="Account Id">
+                            <div class="slds-truncate" title="Acc Id">{!acc.Id}</div>
+                        </td>                        
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Acc Name">{!acc.Name}</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="{!acc.Site}">{!acc.Site}</div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

@@ -1,0 +1,116 @@
+.THIS
+{
+    padding: 0 16px;
+    background-image: url(/resource/lightning_blue_background_fliped);
+    background-position-y: bottom;
+    background-color: rgba(176, 196, 223, 1);
+}
+
+.THIS .custom-box2-inside {
+    margin: 0 0px 0px 0px;
+    border-radius: 5px;
+    background-color: white;
+    height: 100%;
+    padding: 10px 15px 0px 15px;
+}
+
+@media (min-width:48em)
+{
+    .THIS [class*=slds-medium-size_] .custom-box2-inside {
+        margin: 0 0px 0px 3px;
+    }    
+
+    
+    .THIS [class*=slds-medium-size_]:first-child .custom-box2-inside,
+    .THIS [class*=slds-medium-size_]:nth-child(3) .custom-box2-inside,
+    .THIS [class*=slds-medium-size_]:nth-child(5) .custom-box2-inside
+    {
+        margin-left: 0px;
+    }
+}
+
+@media (min-width:64em)
+{
+    .THIS [class*=slds-large-size_] .custom-box2-inside,
+    .THIS [class*=slds-large-size_]:nth-child(3) .custom-box2-inside,
+    .THIS [class*=slds-large-size_]:nth-child(5) .custom-box2-inside
+    {
+        margin: 0 0px 0px 3px;
+    }
+
+    .THIS [class*=slds-large-size_]:first-child .custom-box2-inside {
+        margin-left: 0px;
+    }
+}
+
+
+
+
+.THIS .Width30{
+    width:30%;
+}
+
+.THIS .Width20{
+    width:20%;
+}
+
+.THIS .Width10{
+    width:10%;
+}
+
+.THIS .Width40{
+    width:40%;
+}
+
+.THIS .custom-box {
+    text-align: left;
+    background-color: #f4f6f9;
+    border: 1px solid #d8dde6;
+}
+
+.THIS .fieldset-margin-left-40px {
+    margin-left: -40px;
+}
+
+.THIS .fieldset-margin-left-30px {
+    margin-left: -30px;
+}
+
+.THIS .fieldset-margin-left-20px {
+    margin-left: -20px;
+}
+
+.THIS .fieldset-margin-left-10px {
+    margin-left: -10px;
+}
+
+.THIS .Width250px{
+    width:250px;
+}
+.THIS .Width230px{
+    width:230px;
+}
+
+.THIS .Width200px{
+    width:200px;
+}
+.THIS .Width150px{
+    width:150px;
+}
+/* .THIS .table_row {
+    display: table-row;
+}
+.THIS .table_cell {
+    display: table-cell;
+}
+.THIS .table {
+    display: table;
+} 
+
+.THIS .custom-box2 {
+
+    padding: 1rem;
+    outline-offset: -5px !important;
+    outline: 1px solid rgb(221, 219, 218) !important;
+}
+*/

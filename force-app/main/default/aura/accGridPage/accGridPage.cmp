@@ -1,0 +1,29 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="record" type="Object" />
+    <aura:attribute name="accountRecord" type="Object" />
+    <aura:attribute name="recordError" type="String" />   
+    <force:recordData aura:id="recordData"
+     layoutType="FULL"
+     recordId="{!v.recordId}"
+     targetError="{!v.recordError}"
+     targetFields="{!v.accountRecord}" 
+     mode="VIEW"/>
+    
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <span><c:accDisplay accRecordId="{!v.recordId}"/></span>
+        </div>
+        <div class="slds-col">
+        <span><c:accDisplay accRecordId="{!v.recordId}"/></span>
+        </div>
+        <div class="slds-col">
+       <span><c:accDisplay accRecordId="{!v.recordId}"/></span>
+        </div>
+        <div class="slds-col">
+        <span><c:accDisplay accRecordId="{!v.recordId}"/></span>
+        </div>
+        <div class="slds-col">
+        <span><c:accDisplay accRecordId="{!v.recordId}"/></span>
+        </div>                
+        </div>
+</aura:component>

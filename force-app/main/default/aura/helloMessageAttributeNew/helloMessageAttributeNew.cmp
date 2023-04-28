@@ -1,0 +1,4 @@
+<aura:component >
+    <aura:attribute name="custommessage" type="String" />
+    <h1>{!'Jethi' + v.custommessage}</h1>
+</aura:component>

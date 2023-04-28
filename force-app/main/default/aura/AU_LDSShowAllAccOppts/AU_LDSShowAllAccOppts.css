@@ -1,0 +1,9 @@
+.THIS {
+}
+
+.THIS .noDataClass{
+    font-weight: bold;
+    margin: auto;
+    width: 60%;
+    padding: 10px;   
+}

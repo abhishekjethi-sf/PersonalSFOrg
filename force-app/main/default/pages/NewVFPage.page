@@ -1,0 +1,463 @@
+<apex:page showHeader="false" sidebar="false" >
+<html>
+
+<head>
+	<title>Invoice</title>
+
+	<style>
+		/* reset */
+
+		* {
+			border: 0;
+			box-sizing: content-box;
+			color: inherit;
+			font-family: inherit;
+			font-size: inherit;
+			font-style: inherit;
+			font-weight: inherit;
+			line-height: inherit;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+			vertical-align: top;
+		}
+
+		/* heading */
+
+		h1 {
+			font: bold 100% sans-serif;
+			letter-spacing: 0.5em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		/* table */
+
+		table {
+			font-size: 75%;
+			table-layout: fixed;
+			width: 100%;
+		}
+
+		table {
+			border-collapse: separate;
+			border-spacing: 2px;
+		}
+
+		th,
+		td {
+			border-width: 1px;
+			padding: 0.5em;
+			position: relative;
+			text-align: left;
+		}
+
+		th,
+		td {
+			border-radius: 0.25em;
+			border-style: solid;
+		}
+
+		th {
+			background: #EEE;
+			border-color: #BBB;
+		}
+
+		td {
+			border-color: #DDD;
+		}
+
+		/* page */
+
+		html {
+			font: 16px/1 "Open Sans", sans-serif;
+			overflow: auto;
+			padding: 0.5in;
+		}
+
+		html {
+			background: #999;
+			cursor: default;
+		}
+
+		body {
+			box-sizing: border-box;
+			height: 11in;
+			margin: 0 auto;
+			overflow: hidden;
+			padding: 0.5in;
+			width: 8.5in;
+		}
+
+		body {
+			background: #FFF;
+			border-radius: 1px;
+			box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+		}
+
+		/* header */
+
+		header {
+			margin: 0 0 1em;
+		}
+
+		header:after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+
+		header h1 {
+			background: #000;
+			border-radius: 0.25em;
+			color: #FFF;
+			margin: 0 0 1em;
+			padding: 0.5em 0;
+		}
+
+		header address {
+			float: left;
+			font-size: 75%;
+			font-style: normal;
+			line-height: 1.25;
+			margin: 0 1em 1em 0;
+		}
+
+		header address p {
+			margin: 0 0 0.25em;
+			color: #000;
+			font-weight: bold;
+		}
+
+		header span,
+		header img {
+			display: block;
+			float: right;
+		}
+
+		header span {
+			margin: 0 0 1em 1em;
+			max-height: 25%;
+			max-width: 60%;
+			position: relative;
+		}
+
+		header img {
+			max-height: 100%;
+			max-width: 100%;
+		}
+
+		header input {
+			cursor: pointer;
+			-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+			height: 100%;
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		/* article */
+
+		article,
+		article address,
+		table.meta,
+		table.inventory {
+			margin: 0 0 1em;
+		}
+
+		article:after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+
+		article h1 {
+			clip: rect(0 0 0 0);
+			position: absolute;
+		}
+
+		article address {
+			float: left;
+			font-size: 100%;
+			font-weight: bold;
+			color: #000;
+		}
+
+		article message {
+			text-align: left;
+			font-size: 100%;
+			font-weight: normal;
+		}
+
+		article bold {
+			font-weight: bold;
+		}
+
+		/* table meta&amp;balance */
+
+		table.meta,
+		table.balance {
+			float: right;
+			width: 36%;
+		}
+
+		table.meta:after,
+		table.balance:after {
+			clear: both;
+			content: "";
+			display: table;
+		}
+
+		/* table meta */
+
+		table.meta th {
+			width: 40%;
+			color: #000;
+			font-weight: bold;
+		}
+
+		table.meta td {
+			width: 60%;
+			color: #000;
+		}
+
+		/* table items */
+
+		table.inventory {
+			clear: both;
+			width: 100%;
+			color: #000;
+		}
+
+		table.inventory th {
+			font-weight: bold;
+			text-align: center;
+			color: #000;
+		}
+
+		table.inventory td:nth-child(1) {
+			width: 26%;
+		}
+
+		table.inventory td:nth-child(2) {
+			width: 38%;
+		}
+
+		table.inventory td:nth-child(3) {
+			text-align: right;
+			width: 12%;
+		}
+
+		table.inventory td:nth-child(4) {
+			text-align: right;
+			width: 12%;
+		}
+
+		table.inventory td:nth-child(5) {
+			text-align: right;
+			width: 12%;
+		}
+
+		/* table balance */
+
+		table.balance th {
+			width: 50%;
+			font-weight: bold;
+			color: #000;
+		}
+
+		table.balance td {
+			width: 50%;
+			text-align: right;
+			color: #000;
+		}
+
+		/* aside */
+
+		aside h1 {
+			border: none;
+			border-width: 0 0 1px;
+			margin: 0 0 1em;
+			color: #000;
+		}
+
+		aside div {
+			color: #000;
+			font-size: small;
+		}
+
+		aside h1 {
+			border-color: #999;
+			border-bottom-style: solid;
+		}
+
+		@media print {
+			* {
+				-webkit-print-color-adjust: exact;
+			}
+
+			html {
+				background: none;
+				padding: 0;
+			}
+
+			body {
+				box-shadow: none;
+				margin: 0;
+			}
+
+			span:empty {
+				display: none;
+			}
+
+			.add,
+			.cut {
+				display: none;
+			}
+		}
+
+		@page {
+			margin: 0;
+		}
+	</style>
+
+
+	<script>
+		!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="E2WXK-V72WY-89FA8-9N9YK-FX4S5",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(c){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"E2WXK-V72WY-89FA8-9N9YK-FX4S5";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="367gvqyxemv66yd5oqtq-f-b9f99d1af-clientnsv4-s.akamaihd.net",i={"ak.v":"31","ak.cp":"496883","ak.ai":parseInt("326595",10),"ak.ol":"0","ak.cr":6,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"1039d69b","ak.r":20691,"ak.a2":n,"ak.m":"a","ak.n":"essl","ak.bpcip":"223.190.106.0","ak.cport":62777,"ak.gh":"96.17.182.38","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.csrc":"-","ak.acc":"reno","ak.t":"1618834471","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==gdHSm5Kg9QkPTjTg0PkUX2l6TA6tlMbD8ib1ntlkSpFbiUAu7rNGs/UmnRX4/7fiifveNDcmKNkb20icMkAJsAP4w4CSePxrb5PqNrLa1gVmbStq/59XcRtbQzay2oqgBd7/g7a9wlXhNtTz2CJSp5ylptMs9A+SSqW0b1lVu3JkSdXg65pa5utDFyVUUXBI0P1a0LrDHCoXcNsXd/Af4gmypi3CP0EF8Lg4l/KmDbDlS13P9xoZMDDb8vzOKDNGWUF6FOXBohPdmdNeKPKmCaimRESWACQNKCtinMEB+UFZ1rfv+HHpAMVbov82fn6ux32nDxPFs2fqTCxHT+kD7BWr6U0j25hCswtUy0mCBvonlcFCae2LiJW/o/CiFpwcKauaUIXe8AL3hPcC9L+HzVUg1oTMBZgJRxFaBEkiBlk=","ak.pv":"32","ak.dpoabenc":""};if(""!==t)i["ak.ruds"]=t;var o={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))i["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:a,init:function(){if(!o.i){var e=BOOMR.subscribe;e("before_beacon",o.av,null,null),e("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);
+	</script>
+</head>
+
+<body>
+	<header>
+		<h1>Invoice</h1>
+		<address>
+			<p>Test Test Test Test</p>
+			<p>
+				undefined
+				<br/>undefined, undefined undefined
+            </p>
+				<p>0499999999</p>
+		</address>
+		<span>
+        </span>
+	</header>
+
+	<article>
+		<address>
+			<p>
+				Woolworths Group Limited
+				<br/>1 Woolworths Way
+				<br/>BELLA VISTA, NSW, 2153
+            </p>
+		</address>
+		<table class="meta">
+			<tr>
+				<th> <span>Invoice #</span> </th>
+				<td> <span>1000000015440670</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Date</span> </th>
+				<td> <span>Mon Apr 19 2021</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Amount Due</span> </th>
+				<td> <span id="prefix">$</span> <span>0.00</span> </td>
+			</tr>
+		</table>
+	</article>
+
+	<article>
+		<address>
+			<p>THNAK YOU FOR YOUR PURCHASE!</p>
+			<message>
+				<p>
+					<br/>Hello Ben, <br/>
+					<br/> Thank you for your purchasing Woolworths Roadside
+					<br/>Assistance. We are here to assist you 24/7, 365 days a
+					<br/>year. <br/>
+					<br/>Please call us on <bold> 1800 225 405 </bold>if you need assistance.
+					<br/> <br/> Enjoy, <br/>
+					<br/> Gerrad Hennessy
+					<br/> Head of Woolworths Insurance
+                </p>
+			</message>
+		</address>
+
+		<table class="meta">
+			<tr>
+				<th> <span>Vehicle Registration</span> </th>
+				<td> <span>00MJL</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Vehicle Description</span> </th>
+				<td> <span>Subaru B6A Outback 2.5i Premium 4 Wagon CVT 2.5L Flat4 Petrol 2016</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Membership number</span> </th>
+				<td> <span>11149</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Policy number</span> </th>
+				<td> <span>RSA-P-112283-0</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Coverage Date</span> </th>
+				<td> <span>2021-03-31 - 2022-03-31</span> </td>
+			</tr>
+		</table>
+	</article>
+
+	<article>
+		<table class="inventory">
+			<thead>
+				<tr>
+					<th> <span>Product </span> </th>
+					<th> <span>Description</span> </th>
+					<th> <span>Price</span> </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> <span>Basic</span> </td>
+					<td> <span>Woolworths Roadside Assistance</span> </td>
+					<td> <span>$99.00</span> </td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="balance">
+			<tr>
+				<th> <span>Policy Price (inc. GST)</span> </th>
+				<td> <span>$99.00</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Discounts Applied</span> </th>
+				<td> <span>$0.00</span> </td>
+			</tr>
+			<tr>
+				<th> <span>Total Paid (inc. GST)</span> </th>
+				<td> <span>$99.00</span> </td>
+			</tr>
+		</table>
+	</article>
+
+	<br/> <br/> <br/> <br/> <br/>
+
+	<aside>
+		<div>
+			<p>
+				Woolworths Group Limited 2020. All rights reserved. ABN 88 000 014 675. Add T&amp;C here.
+				<br/> <br/>
+            </p>
+		</div>
+	</aside>
+
+	<header>
+    </header>
+</body>
+
+</html>
+</apex:page>

@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" >
+    <aura:attribute name= "accRecord" type="Object" />
+    <aura:attribute name="accountRecord" type="Object" />
+    <aura:attribute name="accError" type="String" />
+    
+    <force:recordData aura:id="accRecordDisplay"
+     recordId="{!v.recordId}"
+     mode="VIEW"
+     layoutType="FULL"
+     targetRecord="{!v.accRecord}"
+     targetFields="{!v.accountRecord}"   
+     targetError="{!v.accError}"/>
+    
+     <!-- Display a lightning card with details about the record -->
+    <div class="Record Details">                   
+        <lightning:card iconName="standard:account" title="{!v.accountRecord.Name}">
+            <p><lightning:formattedText title="Industry" value="{!v.accountRecord.Industry}" /></p>
+            <p><lightning:formattedText title="Description" value="{!v.accountRecord.Description}" /></p>
+            <p><lightning:formattedPhone title="Phone" value="{!v.accountRecord.Phone}" /></p>
+        </lightning:card>
+    </div>
+    
+    <!-- Display Lightning Data Service errors, if any -->
+    <aura:if isTrue="{!not(empty(v.accError))}">
+        <div class="accError">
+            {!v.accError}</div>
+    </aura:if>       
+</aura:component>

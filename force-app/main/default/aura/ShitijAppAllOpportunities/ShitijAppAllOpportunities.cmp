@@ -1,0 +1,19 @@
+<aura:component controller="ShitijAppClass">
+    <aura:attribute name="opportunities" type="List"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute name="checkVisibility" type="boolean" default="false"/>
+    
+    <aura:handler event="c:ShitijAppEvent" action="{!c.handleApplicationEvent}"/> <!-- Application Event Handled -->
+    
+    <lightning:card title="Opportunities" iconName="standard:opportunity">
+        <aura:if isTrue="{!v.checkVisibility}">
+                <lightning:datatable data="{! v.opportunities }"
+                                     columns="{! v.mycolumns }"
+                                     keyField="id"
+                                     hideCheckboxColumn="true" class="table-test"/> 
+            <aura:set attribute="else">
+                <div class="slds-text-align_center">No Records to Display</div>
+            </aura:set>
+        </aura:if> 
+    </lightning:card>
+</aura:component>

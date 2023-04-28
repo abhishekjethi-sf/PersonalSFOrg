@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Validation File Upload Event">
+    <aura:attribute name="filerrorMessage" type="String" />
+</aura:event>

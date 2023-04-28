@@ -1,0 +1,15 @@
+<apex:page controller="aouthWebserverFlowController">
+    <apex:form >
+        <apex:outputLink value="{!fullURL}"> Get Authorization Code</apex:outputLink>
+        <br/><br/> URL To Get Oauth Code :------->>>>> {!fullURL}
+        <br/><br/>
+
+        <br/><br/> Returned oAuth Code :--------->>>>>>>> {!oAuthCode}
+        <br/>
+        <apex:commandButton value="Get Access Token" action="{!getAccessToken}" />
+        <br/><br/> Acess Token: ------->>>>> {!accessToken}
+        <br/><br/>
+        <apex:commandButton value="Get Dev 2 Org Account Metadata" action="{!getAnotherOrgAccountMetadata}" />
+        <br/><br/> Dev 2 Org Meta Data: ------->>>>> {!Dev2OrgAccountMetaData }
+    </apex:form>
+</apex:page>

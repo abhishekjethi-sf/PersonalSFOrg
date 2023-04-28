@@ -1,0 +1,26 @@
+<!-- This component shows all the Opportunities for an Account record using LDS-->
+<aura:component controller="AULDSShowAllAccOppts" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="simpleRecord" type="Account" />
+    <aura:attribute name="opportunities" type="Opportunity"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="countOppts" type="Integer" />
+    <aura:attribute name="noOppData" type="String"/>
+
+    <!--create a spinner component attribute -->
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    
+    <force:recordData aura:id="accRecordCmp" 
+                      recordId="{!v.recordId}"
+                      layoutType="FULL" targetFields ="{!v.simpleRecord}" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+      <!-- Show the Opportunities -->
+    <c:AU_Spinner show="{!v.showSpinner}"/>
+        <lightning:card iconName="standard:opportunity" title="{!'Opportunity List for ' + v.simpleRecord.Name}">
+            <aura:if isTrue="{!v.countOppts > 0}">
+            	<lightning:dataTable data="{!v.opportunities}" columns="{!v.columns}" keyField="id" hideCheckboxColumn="true" />
+              <aura:set attribute="else">
+                        <div class="noDataClass">{!v.noOppData}</div>
+              </aura:set>
+    		</aura:if>
+         </lightning:card>
+</aura:component>

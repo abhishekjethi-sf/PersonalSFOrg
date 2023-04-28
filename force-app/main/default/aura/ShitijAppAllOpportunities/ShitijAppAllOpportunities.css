@@ -1,0 +1,34 @@
+.THIS .slds-table th{
+    white-space: unset !important;
+}
+.THIS .slds-table td{
+    white-space: unset !important;
+}
+.THIS .slds-truncate {
+    white-space: unset !important;
+}
+
+.THIS .slds-button_icon-bare {
+    display: none;
+}
+
+.THIS .slds-truncate {
+    text-overflow: inherit;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+}
+
+.THIS .table-test thead th span {
+    background-color: #165c33;
+    color: whitesmoke;
+    text-transform: capitalize;
+}
+
+.THIS .table-test tr {
+    background-color: #80520d;
+}
+
+.THIS .table-test table tr:last-child * {
+    font-weight: 800;
+}

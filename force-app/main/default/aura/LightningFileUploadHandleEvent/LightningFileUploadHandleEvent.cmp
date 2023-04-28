@@ -1,0 +1,5 @@
+<aura:component >
+    <aura:attribute name="messageFromEvent" type="String"/>
+	<aura:handler event="c:LightningFileUploadEvent" action="{!c.handleApplicationEvent}"/>
+	<div class="slds-text-color_error">{!v.messageFromEvent}</div>
+</aura:component>

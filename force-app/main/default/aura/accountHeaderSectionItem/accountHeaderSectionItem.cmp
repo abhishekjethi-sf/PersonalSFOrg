@@ -1,0 +1,33 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="sectionTitle" type="String" />
+    <aura:attribute name="iconName" type="String" />
+    <aura:attribute name="sectionName" type="String" />
+    <aura:attribute name="accRecordId" type="String" />
+    <lightning:layoutItem padding="around-small" class="slds-size_1-of-5">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="{!v.iconName}"/>
+            </div>
+                <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                        {!v.sectionTitle}
+                </h2>
+            </div>
+        </header> 
+        <br/>
+        <table style="width:100%">
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+            </tr>
+        </table>     
+   </lightning:layoutItem>          
+</aura:component>

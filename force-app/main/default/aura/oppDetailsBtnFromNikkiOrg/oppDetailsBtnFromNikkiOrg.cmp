@@ -1,0 +1,42 @@
+<aura:component controller="oppIntegrationtoNikkiOrgCls" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:attribute name="oppDetails" type="List" />
+    <aura:attribute name="btnClicked" type="boolean" default="false"/>
+
+    <div class="slds-grid slds-grid_vertical-align-center">
+        <div class="slds-col">
+            <lightning:card title="Opportunity Information" iconName="standard:opportunity">
+                <div class="slds-align_absolute-center">
+                    <!-- Brand variant: Identifies the primary action in a group of buttons -->
+                    <lightning:button variant="brand" label="{!$Label.c.NikkiOrgLtngBtn}"  onclick="{!c.handleClick }" disabled="{!v.btnClicked}"/>
+                </div>  
+                <br/>  
+                <div class="slds-align_absolute-center">
+                    <aura:iteration items="{!v.oppDetails}" var="opportunity">
+                        <table style="width:100%; border: 1px solid black;border-spacing: 5px;">
+                            <tr style="border: 1px solid black;background-color: #f1f1c1;text-align: left;padding: 5px;">
+                                <td style="border: 1px solid black;">Opportunity Name</td>
+                                <td style="border: 1px solid black;">{!opportunity.Name}</td>
+                            </tr>
+                            <tr style="border: 1px solid black;background-color: #f1f1c1;text-align: left;padding: 5px;">
+                                <td style="border: 1px solid black;">Opportunity Amount</td>
+                                <td style="border: 1px solid black;">{!opportunity.Amount}</td>
+                                </tr>
+                            <tr style="border: 1px solid black;background-color: #f1f1c1;text-align: left;padding: 5px;">
+                                <td style="border: 1px solid black;">Opportunity Close Date</td>
+                                <td style="border: 1px solid black;">{!opportunity.CloseDate}</td>
+                            </tr>
+                            <tr style="border: 1px solid black;background-color: #f1f1c1;text-align: left;padding: 5px;">
+                                <td style="border: 1px solid black;">Opportunity StageName</td>
+                                <td style="border: 1px solid black;">{!opportunity.StageName}</td>
+                            </tr>
+                            <tr style="border: 1px solid black;background-color: #f1f1c1;text-align: left;padding: 5px;">
+                                <td style="border: 1px solid black;">Opportunity Amount</td>
+                                <td style="border: 1px solid black;">{!opportunity.Amount}</td>
+                            </tr> 
+                        </table>
+                  </aura:iteration>  
+                </div>          
+            </lightning:card>
+        </div>
+      </div>
+</aura:component>

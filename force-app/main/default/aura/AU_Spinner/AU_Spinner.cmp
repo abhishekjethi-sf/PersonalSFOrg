@@ -1,0 +1,8 @@
+<aura:component >
+	<aura:attribute name="show" type="Boolean" default="false" />
+    <aura:handler name="change" value="{!v.show}" action="{!c.spinnerDisplayHandler}"/>
+	
+	<div>
+		<lightning:spinner aura:id="spinner" alternativeText="Loading Information" variant="brand" size="medium"/>
+	</div>
+</aura:component>

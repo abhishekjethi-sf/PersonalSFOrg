@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    <!--lightning:notificationsLibrary aura:id="notifLib"/-->
+    <!--lightning:button name="notice" label="Show Notice" onclick="{!c.handleShowNotice}"/-->
+    <!--lightning:button name="toast" label="Show Toast" onclick="{!c.handleShowToast}"/-->
+    <div class="example1">
+    	<h3>Here is the list of Accounts and related Contacts and Opportunities.</h3>
+    </div>
+</aura:component>

@@ -1,0 +1,24 @@
+<aura:component >
+    <aura:attribute name="messages" type="List" default="['Abhishek','Jethi','SFDX Champ']" />
+    <h1> Display as list</h1>
+    <p><c:helloMessageNew message="{!v.messages[0]}" /></p>
+    <p><c:helloMessageNew message="{!v.messages[1]}" /></p>
+    <p><c:helloMessageNew message="{!v.messages[2]}" /></p>
+    
+    <br></br>
+    
+    <h1> Display as aura iteration</h1>
+    <aura:iteration items="{!v.messages}" var="msg">
+        <c:helloMessageNew message="{!msg}" />
+    </aura:iteration>
+    
+    <h1> If Else</h1>
+	<aura:if isTrue ="{!$Browser.isIPhone}">
+        <p><c:helloMessageNew message="{!v.messages[0]}" /></p>
+       <aura:set attribute="else">
+         <p><c:helloMessageNew message="{!v.messages[1]}" /></p>
+       </aura:set>
+    </aura:if>
+    
+       
+</aura:component>

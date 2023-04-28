@@ -1,0 +1,10 @@
+.THIS {
+}
+
+.THIS .appContainer {
+    font-size: 16px;
+    font-weight: 600;
+    align-content: center;
+    padding-left: 50rem;
+    padding-right: 50rem;
+}

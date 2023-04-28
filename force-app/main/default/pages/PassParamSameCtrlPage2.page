@@ -1,0 +1,10 @@
+<apex:page docType="html-5.0"  controller="PassParamSameCtrl" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                Date3: <apex:input type="date" value="{!date3}"/>
+                Date4: <apex:input type="date" value="{!date4}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
