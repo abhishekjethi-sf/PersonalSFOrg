@@ -145,8 +145,8 @@ jobs:
                   echo ${{ secrets.SFDX_ORG_URL}} > ./SFDX_ORG_URL.txt
 
             # Authenticate to org using the URL stored in the text file
-            #- name: 'Authenticate to Integration Org'
-            #  run: sfdx auth:sfdxurl:store -f ./SFDX_INTEGRATION_URL.txt -s -a integration
+            -  name: 'Authenticate to Personal Org'
+               run: sfdx auth:sfdxurl:store -f ./SFDX_ORG_URL.txt -s -a personalOrg
 
             # We use SFDX Git Delta to create a directory with only the metadata that has changed.
             # this allows us to deploy only those changes, as opposed to deploying the entire branch. 
@@ -178,7 +178,7 @@ jobs:
             # If the env variable does not equal 'all', we know that there is a list of
             # tests that can be run
 
-            - name: 'Check-only deploy delta changes - run specified tests'
+            - name: 'Check-only deploy delta changes - Run Specified Tests'
               if: ${{ env.APEX_TESTS != 'all' }}
               run: |
                   echo ${{env.APEX_TESTS}}
