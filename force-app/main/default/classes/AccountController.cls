@@ -1,14 +1,7 @@
 public class AccountController {
     
       
-    // Insert Account
-    @AuraEnabled
-    public static Account insertAccount(Account accData){
-        accData.Name = accData.Name + String.valueof(system.now());
-        insert accData;
-        return accData;
-    }
-    
+   
     @AuraEnabled
     public static list<Account> getAccounts(){
         String soqlQuery = 'SELECT Id, Name,Site FROM Account';
