@@ -146,7 +146,7 @@ jobs:
 
             # Authenticate to org using the URL stored in the text file
             -  name: 'Authenticate to Personal Org'
-               run: sfdx auth:sfdxurl:store -f ./SFDX_ORG_URL.txt -s -a personalOrg
+               run: sf org login sfdx-url -f ./SFDX_ORG_URL.txt -s -a personalOrg
 
             # We use SFDX Git Delta to create a directory with only the metadata that has changed.
             # this allows us to deploy only those changes, as opposed to deploying the entire branch. 
