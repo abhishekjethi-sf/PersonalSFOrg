@@ -1,20 +1,11 @@
 # Unique name for this workflow
-name: Validate PR on develop branch
+name: Merge PR on develop branch
 
 # Definition when the workflow should run
 on:
     # The workflow will run whenever an event happens on a pull request
-    pull_request:
-      # The events are that a PR is opened, or when a commit is pushed
-      # to a branch that has an existing pull request
-      types: [opened, synchronize]
-      # The branches filter allows to specify that this workflow should only
-      # run if the branch name is "develop". This way we prevent this workflow
-      # from running when PRs are opened on other branches
+    push:
       branches: [ develop ]
-      # We only care about changes to the force-app directory, which is the
-      # root directory of the sfdx project. This prevents the job from running
-      # when changing non-salesforce files (like this yml file).
       paths:
         - 'force-app/**'
             
@@ -22,19 +13,13 @@ on:
 # Jobs to be executed when the above conditions are met
 jobs:
     # This is the name of the job. You can give it whatever name you want
-    validate-deployment-on-develop-org:
+    deploy-changes-on-personal-org:
         # As mentioned in the blog post, this job runs inside a VM. Here we
         # can specify which OS this VM should run on. 
         # In this case, we are going to run our commands on the latest version
         # of ubuntu
         runs-on: ubuntu-latest
-        permissions:
-          # required for all workflows
-          security-events: write
-
-          # only required for workflows in private repositories
-          actions: read
-          contents: read    
+  
 
         if: ${{ github.actor != 'dependabot[bot]' }}
         steps:
@@ -122,10 +107,6 @@ jobs:
                 sudo apt-get update
                 sudo apt install default-jdk
 
-            # Install SFDX scanner
-            - name: 'Installing SFDX scanner'
-              run: sfdx plugins:install @salesforce/sfdx-scanner
-
             # Prior to setting up this workflow, you have to create a Github Secret
             # that contains the sfdx url of the integration/qa org.
 
@@ -157,22 +138,11 @@ jobs:
                   sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
 
             # Now we can use the sfdx scanner to scan the code in the delta directory
-            # The output of the scan is stored in a file called apexScanResults.sarif
+            # The output of the scan is stored in a file called apexScanResults.sarif !Design,!Best Practices Design,Best Practices,Performance
+            # SFDX Scanner link - https://forcedotcom.github.io/sfdx-scanner/en/v3.x/scanner-commands/run/
 
             # The .sarif file can later be uploaded to github, so that we can see the 
             # results of the scan directly from the PR.
-
-            - name: 'Scan code'
-              run: |
-                  cd changed-sources
-                  sfdx scanner:run --format sarif --target './**/*.cls' --category "Design,Best Practices,Performance" --outfile 'apexScanResults.sarif'  
-                  cd ..
-
-            # Now we upload the .sarif file as explained in the previous step
-            - name: Upload SARIF file 
-              uses: github/codeql-action/upload-sarif@v2
-              with:
-               sarif_file: changed-sources/apexScanResults.sarif
 
             # We do a check-only deploy and we only run the tests specified in the PR
             # If the env variable does not equal 'all', we know that there is a list of
@@ -182,7 +152,7 @@ jobs:
               if: ${{ env.APEX_TESTS != 'all' }}
               run: |
                   echo ${{env.APEX_TESTS}}
-                  sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunSpecifiedTests --runtests ${{env.APEX_TESTS}} --json
+                  sfdx force:source:deploy -p "changed-sources/force-app" --testlevel RunSpecifiedTests --runtests ${{env.APEX_TESTS}} --json
 
             # If the env variable equals all, we run all tests
             - name: 'Check-only deploy delta changes - run all tests'
