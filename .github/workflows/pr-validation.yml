@@ -157,7 +157,8 @@ jobs:
                   sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
 
             # Now we can use the sfdx scanner to scan the code in the delta directory
-            # The output of the scan is stored in a file called apexScanResults.sarif
+            # The output of the scan is stored in a file called apexScanResults.sarif !Design,!Best Practices Design,Best Practices,Performance
+            # SFDX Scanner link - https://forcedotcom.github.io/sfdx-scanner/en/v3.x/scanner-commands/run/
 
             # The .sarif file can later be uploaded to github, so that we can see the 
             # results of the scan directly from the PR.
