@@ -20,6 +20,6 @@ private class AddPrimaryContactTest {
 		Test.stopTest();
 		
 		list<Contact> conList = [SELECT Id FROM Contact];
-		//system.assertEquals(51,conList.size());
+		system.assertEquals(51,conList.size());
     }
 }
