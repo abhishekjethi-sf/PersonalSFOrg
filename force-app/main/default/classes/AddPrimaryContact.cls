@@ -21,7 +21,6 @@ public class AddPrimaryContact implements Queueable {
  		
 		// Inserting the contact list
  		if(!conList.isEmpty()){
-			system.debug('###conList##'+conList);
  			insert conList;
  		}
  	}   
