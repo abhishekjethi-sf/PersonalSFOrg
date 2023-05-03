@@ -5,6 +5,5 @@
               value="Start Request" reRender="result"/> 
    </apex:form>
 
-   <!-- This output text component displays the callout response body. -->
    <apex:outputText id="result" value="{!result}" />
 </apex:page>
