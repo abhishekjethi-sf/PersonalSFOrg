@@ -3,7 +3,6 @@
     <aura:attribute name="record" type="Account" />
     <aura:attribute name="accountRecord" type="Account" />
     <aura:attribute name="errorRecord" type="String" />   
-    <aura:attribute name="errorRecordTest" type="String" />   
     
     <force:recordData aura:id="recordData"
      layoutType="FULL"
