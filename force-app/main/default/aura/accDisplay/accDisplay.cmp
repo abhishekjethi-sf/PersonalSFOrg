@@ -1,5 +1,5 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
-    <aura:attribute name="accRecordId" type="String" /> <!-- Record id of Account -->
+    <aura:attribute name="accRecordId" type="String" /> 
     <aura:attribute name="record" type="Account" />
     <aura:attribute name="accountRecord" type="Account" />
     <aura:attribute name="errorRecord" type="String" />   
