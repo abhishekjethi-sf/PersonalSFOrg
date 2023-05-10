@@ -1,5 +1,5 @@
 ({
 	myAction : function(component, event, helper) {
-		// Dummy comment
+		// Dummy comment - AJ
 	}
 })
