@@ -9,7 +9,7 @@ public class AddPrimaryContact implements Queueable {
  		this.billingState = state;
  	}
  	
-	// Execute method - Dummy comment
+	// Execute method
  	public void execute(QueueableContext context) {
  		list<Account> accList = [SELECT Id FROM Account WHERE BillingState =: billingState LIMIT 200];
  		list<Contact> conList = new list<Contact>();
