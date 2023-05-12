@@ -12,7 +12,6 @@
      targetFields="{!v.accountRecord}" 
      mode="VIEW"/>             
     
-    <!-- Display a lightning card with details about the record -->
     <div class="Record Details"> 
         <lightning:card title="{!v.accountRecord.Name}" >
             <div class="slds-p-horizontal_small">
